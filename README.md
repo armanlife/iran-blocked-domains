@@ -1,6 +1,17 @@
+<div dir=ltr>
+
+# List of blocked domains in Iran
+Many domains have been blocked by the government in Iran. 
+The purpose of this project is to identify these domains and optimize routing for the traffic of these blocked domains to pass through VPN or Proxy.
+This makes it harder to identify the VPN Server for blocking
+  
+ # Statistics
+  The number of domains we have detected are blocked = > 156,000 (one hundred fifty-six thousand)
+</div>
+ <br>
 <div dir=rtl>
 
-# دامنه‌های فیلتر شده در ایران
+# لیست دامنه های فیلتر شده در ایران
 
 # هدف پروژه
 هدف این پروژه شناسایی وب سایت های فیلترشده در ایران میباشد و از طریق شناسایی این وب سایت ها میتوانیم فقط ترافیک سایت های فیلتر شده را از روی VPN عبور دهیم
@@ -8,7 +19,7 @@
   
   # گزارش اسکن
   
-- تعداد دامنه های فیلتر شناسایی شده => 150,000 (صد و پنجاه هزار)
+- تعداد دامنه های فیلتر شناسایی شده => 156,000 (صد و پنجاه و شش هزار)
 
 
 ## نحوه تشخیص فیلتر بودن دامنه
