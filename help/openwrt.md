@@ -22,10 +22,9 @@ https://api.github.com/repos/filteryab/v2ray-rules-dat/releases/latest
 
 ## مرحله دو
 
-مورد بعد ساخت یک Rule به اسم دلخواه هست که ما اینجا اسم Filteryab را براش میزاریم
-و داخلش باید قوانین مربوطه را تعریف کنیم
-نکته مهم ترتیب قرارگیری این Rule ها هست
-که اگر اشتباه باشد به درستی کار نخواهد کرد
+مورد بعد ساخت یک Rule به اسم دلخواه هست که ما اینجا اسم Filteryab را براش میزاریم و داخلش باید قوانین مربوطه را تعریف کنیم
+<br>
+نکته مهم ترتیب قرارگیری این Rule ها هست که اگر اشتباه باشد به درستی کار نخواهد کرد
 
 ![[openwrt](https://raw.githubusercontent.com/filteryab/filteryab.github.io/hidden/assets/image/openwrt/02.jpg](https://raw.githubusercontent.com/filteryab/filteryab.github.io/hidden/assets/image/openwrt/02.jpg)
 ## مرحله سوم
@@ -49,6 +48,7 @@ geoip:ir
 دومین Rule باید Filteryab باشد
 در اینجا تعریف میکنیم چه دامنه های و چه ip های از v2ray عبور کنند
 برای تعریف دامنه دو حالت وجود دارد
+<br>
 1️⃣ حالت یک برای روتر های بسیار قوی است که به شکل کلی پیشنهاد نمیشود
 
 ![[openwrt](https://raw.githubusercontent.com/filteryab/filteryab.github.io/hidden/assets/image/openwrt/04.jpg](https://raw.githubusercontent.com/filteryab/filteryab.github.io/hidden/assets/image/openwrt/04.jpg)
