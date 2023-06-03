@@ -67,21 +67,21 @@ geosite:ir-blocked-domain
 میتوانید تا جایی که روتر قادر به پردازش هست دستی بندی بهش اضافه کنید
 
 ```INI
-geosite : ir-blocked-domain-01
-geosite : ir-blocked-domain-02
-geosite : ir-blocked-domain-03
-geosite : ir-blocked-domain-04
-geosite : ir-blocked-domain-05
-geosite : ir-blocked-domain-06
-geosite : ir-blocked-domain-07
-geosite : ir-blocked-domain-08
-geosite : ir-blocked-domain-09
-geosite : ir-blocked-domain-10
-geosite : ir-blocked-domain-11
-geosite : ir-blocked-domain-12
-geosite : ir-blocked-domain-13
-geosite : ir-blocked-domain-14
-geosite : ir-blocked-domain-15
+geosite:ir-blocked-domain-01
+geosite:ir-blocked-domain-02
+geosite:ir-blocked-domain-03
+geosite:ir-blocked-domain-04
+geosite:ir-blocked-domain-05
+geosite:ir-blocked-domain-06
+geosite:ir-blocked-domain-07
+geosite:ir-blocked-domain-08
+geosite:ir-blocked-domain-09
+geosite:ir-blocked-domain-10
+geosite:ir-blocked-domain-11
+geosite:ir-blocked-domain-12
+geosite:ir-blocked-domain-13
+geosite:ir-blocked-domain-14
+geosite:ir-blocked-domain-15
 ```
 
 در قسمت IP میتوانید رنج ip های فیلترشده را وارد کنید و پیشنهاد میشود که ip dns ها جهت عملکرد بهتر وارد کنید
