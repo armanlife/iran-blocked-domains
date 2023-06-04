@@ -15,12 +15,14 @@ This makes it harder to identify the VPN Server for blocking
 
 # هدف پروژه
 هدف این پروژه شناسایی وب سایت های فیلترشده در ایران میباشد و از طریق شناسایی این وب سایت ها میتوانیم فقط ترافیک سایت های فیلتر شده را از روی VPN عبور دهیم
-با اینکار میتوانیم شناسایی شدن VPN رو سخت تر کنیم و در مصرف پهنای باند صرفه جویی کنیم
+با اینکار میتوانیم شناسایی شدن VPN رو سخت تر کنیم و در مصرف پهنای با[openwrt.md](help%2Fopenwrt.md)ند صرفه جویی کنیم
   
   # گزارش اسکن
   
 - تعداد دامنه های فیلتر شناسایی شده => 156,000 (صد و پنجاه و شش هزار)
 
+## نحوه استفاده
+- [تفکیک ترافیک سایت های فیلترشده در OpenWrt][link-openwrt]
 
 ## نحوه تشخیص فیلتر بودن دامنه
 
@@ -71,3 +73,4 @@ function CheckBlocked($domain)
 
 [link-wikicensorship]: https://wikicensorship.github.io/fa/docs/measure-internet-censorship/
 [link-wikicensorship-dns]: https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/
+[link-openwrt]: https://github.com/filteryab/ir-blocked-domain/blob/main/help/openwrt.md
