@@ -1,53 +1,93 @@
-name: Build geosite.dat
-permissions: write-all
+name: Build domain lists
+
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - "**/README.md"
+    paths:
+      - "data/**"
+      - ".github/workflows/build.yml"
+      - ".github/scripts/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      # v2fly/domain-list-community commit used to build ir-blocked.dat
+      DLC_REF: 6ee52f2c36634aeabeb9c4ba486ca02cd84c3d4f
+      # sing-box version used to compile ir-blocked.srs
+      SING_BOX_VERSION: 1.14.3
 
     steps:
-      - name: Checkout codebasegrep
-        uses: actions/checkout@v3
+      - name: Checkout codebase
+        uses: actions/checkout@v4
         with:
           path: code
 
-      - name: Setup Go
-        uses: actions/setup-go@v4
+      - name: Checkout domain-list-community
+        uses: actions/checkout@v4
         with:
-          go-version-file: code/go.mod
+          repository: v2fly/domain-list-community
+          ref: ${{ env.DLC_REF }}
+          path: dlc
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: dlc/go.mod
+          cache-dependency-path: dlc/go.sum
 
       - name: Set variables
-        run: |
-          echo "RELEASE_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
-          echo "TAG_NAME=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
-        shell: bash
+        run: echo "RELEASE_NAME=$(date +%Y%m%d%H%M%S)" >> "$GITHUB_ENV"
 
-      - name: Build geosite.dat file
+      - name: Build ir-blocked.dat
+        working-directory: dlc
         run: |
-          cd code || exit 1
-          go run ./ --outputdir=../ --exportlists=ir-blocked-domain
-          cd ../ && rm -rf code
+          mkdir -p ../publish
+          go run ./ --datapath=../code/data --outputname=ir-blocked.dat --outputdir=../publish
 
+      - name: Build the lists of the other clients
+        run: bash code/.github/scripts/build-lists.sh code/data/ir-blocked publish
+
+      - name: Compile the sing-box rule set
+        run: |
+          name="sing-box-$SING_BOX_VERSION-linux-amd64"
+          curl -fsSL "https://github.com/SagerNet/sing-box/releases/download/v$SING_BOX_VERSION/$name.tar.gz" | tar -xz
+          "$name/sing-box" rule-set compile --output publish/ir-blocked.srs publish/ir-blocked.json
+          rm publish/ir-blocked.json
+
+      - name: Write checksums
+        working-directory: publish
+        run: |
+          for file in *; do
+            sha256sum "$file" > "$file.sha256sum"
+          done
 
       - name: Git push assets to "release" branch
+        working-directory: publish
         run: |
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b release
-          git add geosite.dat
-          git commit -m "${{ env.RELEASE_NAME }}"
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git add .
+          git commit -m "$RELEASE_NAME"
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin release
 
       - name: Release and upload assets
+        working-directory: publish
         run: |
-          gh release create ${{ env.TAG_NAME }} --generate-notes --latest --title ${{ env.RELEASE_NAME }} ./geosite.dat ./geosite.dat.* ./dlc.dat
+          gh release create "$RELEASE_NAME" \
+            --repo "${{ github.repository }}" \
+            --title "$RELEASE_NAME" \
+            --generate-notes \
+            --latest \
+            ./*
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

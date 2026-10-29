@@ -1,34 +1,70 @@
-<div dir=ltr>
+<div dir="ltr">
 
-# List of blocked domains in Iran
-Many domains have been blocked by the government in Iran. 
-The purpose of this project is to identify these domains and optimize routing for the traffic of these blocked domains to pass through VPN or Proxy.
-This makes it harder to identify the VPN Server for blocking
-  
- # Statistics
-  The number of domains we have detected are blocked = > 156,000 (one hundred fifty-six thousand)
+# List of Blocked Domains in Iran
+
+Many domains are blocked by the government in Iran.
+The purpose of this project is to identify these domains, so that only their traffic is routed through a VPN or proxy.
+This makes the VPN server harder to detect and block.
+
+Number of detected blocked domains: **267,852**
+
+## Download
+
+The latest release, built from [data/ir-blocked](data/ir-blocked) by GitHub Actions:
+
+- [ir-blocked.dat](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked.dat) for V2Ray and Xray: put it next to `geosite.dat` and use `ext:ir-blocked.dat:ir-blocked` in the routing rules
+- [ir-blocked.srs](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked.srs) for sing-box and the clients built on it, such as Hiddify and NekoBox
+- [ir-blocked-clash.txt](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked-clash.txt) for Clash Meta and Mihomo, as a rule provider with `behavior: domain` and `format: text`
+- [ir-blocked-surge.txt](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked-surge.txt) for Surge, Shadowrocket and Stash, as a rule set
+- [ir-blocked.txt](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked.txt): one domain per line, in rank order, so the first lines are the most important domains
+
+Every format matches each domain and its subdomains. The list is large, so it may be slow on weak routers and phones.
+
+## Checking domains
+
+The code that finds the blocked domains is in [checker](checker/). With it you can check any domain or list of domains from inside Iran.
+
+<p>
+  <img src="docs/screenshot/01.png" alt="Choosing a list to check" width="49%">
+  <img src="docs/screenshot/02.png" alt="Checking a list" width="49%">
+</p>
+
 </div>
- <br>
-<div dir=rtl>
+<br>
+<div dir="rtl">
 
-# لیست دامنه های فیلتر شده در ایران
+# لیست دامنه‌های فیلترشده در ایران
 
-# هدف پروژه
-هدف این پروژه شناسایی وب سایت های فیلترشده در ایران میباشد و از طریق شناسایی این وب سایت ها میتوانیم فقط ترافیک سایت های فیلتر شده را از روی VPN عبور دهیم
-با اینکار میتوانیم شناسایی شدن VPN رو سخت تر کنیم و در مصرف پهنای با[openwrt.md](help%2Fopenwrt.md)ند صرفه جویی کنیم
-  
-  # گزارش اسکن
-  
-- تعداد دامنه های فیلتر شناسایی شده => 156,000 (صد و پنجاه و شش هزار)
+## هدف پروژه
 
-## نحوه استفاده
-- [تفکیک ترافیک سایت های فیلترشده در OpenWrt][link-openwrt]
+هدف این پروژه شناسایی وب‌سایت‌های فیلترشده در ایران است.
+با شناسایی این وب‌سایت‌ها می‌توانیم فقط ترافیک سایت‌های فیلترشده را از VPN عبور دهیم.
+این کار شناسایی VPN را سخت‌تر می‌کند و در مصرف پهنای باند هم صرفه‌جویی می‌شود.
 
-## نحوه تشخیص فیلتر بودن دامنه
+تعداد دامنه‌های فیلترشده‌ی شناسایی‌شده: **267,852**
 
-یکی از روش های تشخیص فیلتر بودن یک دامنه استفاده از DNS میباشد
-اولین قدم برای دسترسی به اینترنت DNS است. وقتی شما آدرس نام دامنه را وارد می کنید، این نام باید به IP تبدیل شود تا دستگاه شما بتواند با سرور آن ارتباط برقرار کند.
- سیستم فیلترینگ ایران با دستکاری در DNS به جای نمایش IP اصلی به یکی از سه IP زیر اشاره میکنند
+## دانلود
+
+آخرین نسخه که GitHub Actions از روی [data/ir-blocked](data/ir-blocked) می‌سازد:
+
+- فایل [ir-blocked.dat](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked.dat) برای V2Ray و Xray: کنار `geosite.dat` بگذارید و در قانون‌های مسیریابی `ext:ir-blocked.dat:ir-blocked` بنویسید
+- فایل [ir-blocked.srs](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked.srs) برای sing-box و برنامه‌هایی که روی آن ساخته شده‌اند، مثل Hiddify و NekoBox
+- فایل [ir-blocked-clash.txt](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked-clash.txt) برای Clash Meta و Mihomo، به‌صورت rule provider با `behavior: domain` و `format: text`
+- فایل [ir-blocked-surge.txt](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked-surge.txt) برای Surge، Shadowrocket و Stash، به‌صورت rule set
+- فایل [ir-blocked.txt](https://github.com/armanlife/iran-blocked-domains/releases/latest/download/ir-blocked.txt) لیست ساده است: هر خط یک دامنه به ترتیب رتبه، یعنی خط‌های اول مهم‌ترین دامنه‌ها هستند
+
+همه‌ی فرمت‌ها هر دامنه و زیردامنه‌هایش را شامل می‌شوند. لیست بزرگ است و ممکن است روی روترها و گوشی‌های ضعیف کند باشد.
+
+## نحوه‌ی استفاده
+
+- [تفکیک ترافیک سایت‌های فیلترشده در OpenWrt][link-openwrt]
+
+## نحوه‌ی تشخیص فیلتر بودن دامنه
+
+یکی از روش‌های تشخیص فیلتر بودن یک دامنه، استفاده از DNS است.
+
+اولین قدم برای دسترسی به اینترنت DNS است. وقتی نام یک دامنه را وارد می‌کنید، این نام باید به IP تبدیل شود تا دستگاه شما بتواند با سرور آن ارتباط برقرار کند.
+سیستم فیلترینگ ایران با دستکاری DNS، به جای IP اصلی یکی از این سه IP را برمی‌گرداند:
 
 ```INI
 10.10.34.34
@@ -36,41 +72,21 @@ This makes it harder to identify the VPN Server for blocking
 10.10.34.36
 ```
 
-جهت کسب اطلاعات بیشتر در خصوص DNS به نوشته موجود در [ویکی سانسور][link-wikicensorship] مراجعه کنید
+بعضی دامنه‌ها در DNS دستکاری نمی‌شوند، اما سیستم فیلترینگ اتصال آن‌ها را با بررسی نام دامنه (SNI) قطع می‌کند.
 
-  [بررسی سانسور اینترنت در ارتباط DNS][link-wikicensorship-dns]
- 
-# نمونه کد در زبان PHP برای تشخیص فیلتر بودن سایت
-```php
-function CheckBlocked($domain)
-{
+برای اطلاعات بیشتر درباره‌ی DNS به نوشته‌های [ویکی سانسور][link-wikicensorship] مراجعه کنید:
 
-    $DNS_A = @dns_get_record($domain, DNS_A);
+- [بررسی سانسور اینترنت در ارتباط DNS][link-wikicensorship-dns]
 
-    if (is_countable($DNS_A) == false) {
-        //Need to check manually
-        $StatusBlocked = "manual";
-    } else if (count($DNS_A) == 1 && str_contains($DNS_A[0]['ip'], "10.10.")) {
-        $StatusBlocked = true;
-    } else {
-        $StatusBlocked = false;
-    }
+## بررسی دامنه‌ها
 
-    $result = array(
-        "StatusBlocked" => $StatusBlocked,
-        "dns" => array(
-            "A" => $DNS_A,
-        ),
-    );
+کد پیدا کردن دامنه‌های فیلترشده در پوشه‌ی [checker](checker/) است. با آن می‌توانید هر دامنه یا لیستی از دامنه‌ها را از داخل ایران بررسی کنید.
+## مرجع
 
-    return $result;
-}
-```
+مرجع دامنه‌ها [رتبه‌بندی host.io](https://host.io/rankings) است.
 
-</div> 
-
-
+</div>
 
 [link-wikicensorship]: https://wikicensorship.github.io/fa/docs/measure-internet-censorship/
 [link-wikicensorship-dns]: https://wikicensorship.github.io/fa/docs/measure-internet-censorship/DNS/
-[link-openwrt]: https://github.com/filteryab/ir-blocked-domain/blob/main/help/openwrt.md
+[link-openwrt]: docs/openwrt.md

@@ -1,0 +1,15 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# geosite.dat built locally, like the workflow does
+/publish/
+
+# Scan results: only the final list in data is published
+/results/
+
+# Our own notes, such as how the list is updated
+/notes/

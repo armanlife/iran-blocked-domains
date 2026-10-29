@@ -1,0 +1,8 @@
+/checker
+/checker.exe
+/results/
+
+# Domain lists to check
+/*.csv
+/*.txt
+/dist/
